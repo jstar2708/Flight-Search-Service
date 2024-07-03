@@ -3,9 +3,7 @@ package com.jaideep.fss.controller;
 import com.jaideep.fss.model.FlightSearchRequest;
 import com.jaideep.fss.model.FlightSearchResponse;
 import com.jaideep.fss.service.FlightSearchService;
-import com.jaideep.fss.service.serviceimpl.FlightSearchServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +20,7 @@ public class FlightSearchController {
     private final FlightSearchService flightSearchService;
 
     @GetMapping("/flights")
-    public ResponseEntity<List<FlightSearchResponse>> searchFlight(
-            @RequestBody FlightSearchRequest flightSearchRequest
-    ) {
+    public ResponseEntity<List<FlightSearchResponse>> searchFlight(@RequestBody FlightSearchRequest flightSearchRequest) {
         return new ResponseEntity<>(flightSearchService.searchFlights(flightSearchRequest), HttpStatus.OK);
     }
 
