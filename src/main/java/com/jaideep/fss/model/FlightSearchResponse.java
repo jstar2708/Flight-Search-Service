@@ -22,4 +22,5 @@ public class FlightSearchResponse {
     private LocalDate arrivalDate;
     private double amount;
     private int availableSeats;
+    private int totalSeats;
 }

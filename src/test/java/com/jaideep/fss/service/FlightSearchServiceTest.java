@@ -27,11 +27,11 @@ class FlightSearchServiceTest {
     private FlightSearchServiceImpl flightSearchService;
     @Mock
     private FlightSearchRepository flightSearchRepository;
-    private Flight flightTwo;
+    private Flight flight;
 
     @BeforeEach
     void setUp() {
-        flightTwo = new Flight(1L, "WA321", "Delhi", "Mumbai", LocalDate.of(2024, 1, 18), LocalDate.of(2024, 1, 19), 1210.45d, 560, 325);
+        flight = new Flight(1L, "WA321", "Delhi", "Mumbai", LocalDate.of(2024, 1, 18), LocalDate.of(2024, 1, 19), 1210.45d, 560, 325);
 
     }
 
@@ -42,7 +42,7 @@ class FlightSearchServiceTest {
         LocalDate travelDate = LocalDate.of(2024, 1, 18);
         int passengers = 8;
         List<Flight> availableFlights = new ArrayList<>();
-        availableFlights.add(flightTwo);
+        availableFlights.add(flight);
         FlightSearchRequest flightSearchRequest = new FlightSearchRequest(origin, destination, travelDate, passengers);
         when(flightSearchRepository.findByOriginAndDestinationAndDepartureDateGreaterThanEqualAndAvailableSeatsGreaterThanEqual(origin, destination, travelDate, passengers)).thenReturn(availableFlights);
 
