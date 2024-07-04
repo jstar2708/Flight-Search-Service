@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,13 +20,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class FlightSearchIntegrationTest {
+    private static RestTemplate restTemplate;
     @LocalServerPort
     private int port;
     private String baseUrl = "http://localhost";
-
-    private static RestTemplate restTemplate;
     @Autowired
     private FlightSearchRepository flightSearchRepository;
+
     @BeforeAll
     static void init() {
         restTemplate = new RestTemplate();
