@@ -20,6 +20,7 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,7 +48,7 @@ class FlightSearchControllerTest {
 
         when(flightSearchService.searchFlights(any(FlightSearchRequest.class))).thenReturn(flightSearchResponses);
 
-        this.mockMvc.perform(get("/v1/api/search/flights").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(flightSearchRequest))).andExpect(status().isOk()).andExpect(jsonPath("$.size()", is(flightSearchResponses.size())));
+        this.mockMvc.perform(post("/v1/api/search/flights").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(flightSearchRequest))).andExpect(status().isOk()).andExpect(jsonPath("$.size()", is(flightSearchResponses.size())));
     }
 
     @Test
@@ -56,7 +57,7 @@ class FlightSearchControllerTest {
 
         when(flightSearchService.searchFlights(any(FlightSearchRequest.class))).thenReturn(new ArrayList<>());
 
-        this.mockMvc.perform(get("/v1/api/search/flights").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(flightSearchRequest))).andExpect(status().isOk()).andExpect(jsonPath("$.size()", is(0)));
+        this.mockMvc.perform(post("/v1/api/search/flights").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(flightSearchRequest))).andExpect(status().isOk()).andExpect(jsonPath("$.size()", is(0)));
     }
 
 }
