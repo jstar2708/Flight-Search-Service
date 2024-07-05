@@ -31,6 +31,8 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public void addFlight(FlightUpdateRequest flightUpdateRequest) {
         Flight flight = new Flight();
+        flight.setFlightNumber(flightUpdateRequest.flightNumber());
+        flight.setId(flightUpdateRequest.id());
         flight.setAvailableSeats(flightUpdateRequest.availableSeats());
         flight.setAmount(flightUpdateRequest.amount());
         flight.setDestination(flightUpdateRequest.destination());

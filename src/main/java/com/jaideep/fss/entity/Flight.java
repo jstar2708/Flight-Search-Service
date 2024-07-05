@@ -1,5 +1,6 @@
 package com.jaideep.fss.entity;
 
+import jakarta.annotation.Generated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
