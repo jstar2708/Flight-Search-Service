@@ -35,9 +35,9 @@ class FlightSearchRepositoryTest {
         List<Flight> flights = flightSearchRepository.findByOriginAndDestinationAndDepartureDateGreaterThanEqualAndAvailableSeatsGreaterThanEqual(origin, destination, date, passengers);
         assertNotNull(flights);
         assertThat(flights).hasSize(1);
-        assertThat(flights.get(0).origin()).isEqualTo(origin);
-        assertThat(flights.get(0).departureDate()).isBeforeOrEqualTo(date);
-        assertThat(flights.get(0).availableSeats()).isGreaterThan(passengers);
+        assertThat(flights.get(0).getOrigin()).isEqualTo(origin);
+        assertThat(flights.get(0).getDepartureDate()).isBeforeOrEqualTo(date);
+        assertThat(flights.get(0).getAvailableSeats()).isGreaterThan(passengers);
     }
 
     @Test

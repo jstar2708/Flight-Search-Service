@@ -15,4 +15,6 @@ public interface FlightSearchRepository extends MongoRepository<Flight, Long> {
             LocalDate date,
             int passengers
     );
+
+    Flight findByFlightNumberAndDepartureDate(String flightNumber, LocalDate departureDate);
 }
